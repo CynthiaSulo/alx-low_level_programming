@@ -10,23 +10,22 @@
  */
 int count_words(char *str)
 {
-    int count = 0, i = 0;
+	int count = 0, i = 0;
 
-    while (str[i])
-    {
-        while (isspace(str[i]))
-            i++;
+	while (str[i])
+	{
+		while (isspace(str[i]))
+			i++;
 
-        if (str[i])
-            count++;
+		if (str[i])
+			count++;
 
-        while (str[i] && !isspace(str[i]))
-            i++;
-    }
+		while (str[i] && !isspace(str[i]))
+			i++;
+	}
 
-    return (count);
+	return (count);
 }
-
 /**
  * strtow - Splits a string into words
  * @str: The string to split
@@ -34,45 +33,44 @@ int count_words(char *str)
  */
 char **strtow(char *str)
 {
-    char **words;
-    int count = 0, i = 0, j, k, len;
+	char **words;
+	int count = 0, i = 0, j, k, len;
 
-    if (str == NULL || *str == '\0')
-        return (NULL);
+	if (str == NULL || *str == '\0')
+		return (NULL);
 
-    count = count_words(str);
+	count = count_words(str);
 
-    words = malloc(sizeof(char *) * (count + 1));
+	words = malloc(sizeof(char *) * (count + 1));
 
-    if (words == NULL)
-        return (NULL);
+	if (words == NULL)
+		return (NULL);
 
-    for (j = 0; j < count; j++)
-    {
-        while (isspace(str[i]))
-            i++;
+	for (j = 0; j < count; j++)
+	{
+		while (isspace(str[i]))
+			i++;
 
-        len = 0;
+		len = 0;
 
-        while (str[i + len] && !isspace(str[i + len]))
-            len++;
+		while (str[i + len] && !isspace(str[i + len]))
+			len++;
 
-        words[j] = malloc(sizeof(char) * (len + 1));
+		words[j] = malloc(sizeof(char) * (len + 1));
 
-        if (words[j] == NULL)
-        {
-            for (k = 0; k < j; k++)
-                free(words[k]);
-            free(words);
-            return (NULL);
-        }
+		if (words[j] == NULL)
+		{
+			for (k = 0; k < j; k++)
+				free(words[k]);
+			free(words);
+			return (NULL);
+		}
 
-        strncpy(words[j], str + i, len);
-        words[j][len] = '\0';
-        i += len;
-    }
+		strncpy(words[j], str + i, len);
+		words[j][len] = '\0';
+		i += len;
+	}
+	words[count] = NULL;
 
-    words[count] = NULL;
-
-    return (words);
+	return (words);
 }
