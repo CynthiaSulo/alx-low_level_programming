@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <ctype.h>
+#include "main.h"
 
 /**
  * count_words - Counts the number of words in a string
