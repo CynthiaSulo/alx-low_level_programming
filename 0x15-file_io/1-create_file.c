@@ -1,5 +1,6 @@
 #include <unistd.h>
 #include <fcntl.h>
+#include <string.h>  /* Include <string.h> for strlen */
 
 /**
  * create_file - Creates a file and writes text content to it.
